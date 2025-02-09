@@ -44,14 +44,14 @@ CREATE TABLE achievements (
   achievement_title VARCHAR(50) NOT NULL,
   scores INT NOT NULL,
   mascot VARCHAR(50),
-  human_getting_achievment_id INT,
+  human_getting_achievement_id INT,
   CONSTRAINT `fk_achievement_human`
-    FOREIGN KEY (human_getting_achivement_id) REFERENCES people (human_id)
+    FOREIGN KEY (human_getting_achievement_id) REFERENCES people (human_id)
     ON DELETE CASCADE
     ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
-INSERT into achievements (acheivement_title, scores, mascot, human_getting_achivement_id)
+INSERT into achievements (achievement_title, scores, mascot, human_getting_achievement_id)
 VALUES(
   "Stick of Truth", "1", "Mr. Hankey", "1"
 ), 
@@ -84,9 +84,12 @@ VALUES(
 ),
 (
   "Thousand of Devils!", "1000", "Boyarsky Hat", NULL
-)
+);
 
-SELECT acheivement_title, scores
+-- Список всех человеков, у которых есть ачивки:
+SELECT first_name, last_name, achievement_title, scores
 FROM achievements
-LEFT OUTER JOIN people
-ON achievements.human_getting_achivement_id = people.human_id;
+INNER JOIN people
+ON achievements.human_getting_achievement_id = people.human_id
+ORDER BY last_name ASC;
+
