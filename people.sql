@@ -93,3 +93,36 @@ INNER JOIN people
 ON achievements.human_getting_achievement_id = people.human_id
 ORDER BY last_name ASC;
 
+-- Список всех ачивок + все человеки, у которых есть ачивки:
+SELECT first_name, last_name, achievement_title, scores
+FROM achievements
+LEFT OUTER JOIN people
+ON achievements.human_getting_achievement_id = people.human_id
+ORDER BY last_name ASC;
+
+-- Список всех человеков + все ачивки, которые у них есть:
+SELECT first_name, last_name, achievement_title, scores
+FROM achievements
+RIGHT OUTER JOIN people
+ON achievements.human_getting_achievement_id = people.human_id
+ORDER BY last_name ASC;
+
+--А это Full Join, который в Maria DB почему-то не работает, поэтому я вызвал его вот так:
+SELECT first_name, last_name, achievement_title, scores FROM achievements
+LEFT JOIN people
+ON achievements.human_getting_achievement_id = people.human_id
+UNION
+SELECT first_name, last_name, achievement_title, scores FROM achievements
+RIGHT JOIN people
+ON achievements.human_getting_achievement_id = people.human_id;
+
+--Количество ачивок и сумма очков
+SELECT people.first_name, people.last_name,
+COUNT(achievement_title) as achievement_amount, 
+SUM(scores) as total_scores
+FROM achievements
+INNER JOIN people -- так получаем только тех человеков, у которых есть ачивки
+-- RIGHT JOIN PEOPLE -- для получения списка всех человеков с подсчётом их ачивок
+ON achievements.human_getting_achievement_id = people.human_id
+GROUP BY people.first_name, people.last_name
+ORDER BY last_name ASC;
