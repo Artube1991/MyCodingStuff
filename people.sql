@@ -1,3 +1,4 @@
+--Создание и заполнение таблиц со списком человеков:
 CREATE TABLE people (
     human_id INT AUTO_INCREMENT PRIMARY KEY,
     birth_year INT,
@@ -38,7 +39,7 @@ VALUES(
           "1998", "Denis", "Tschikaylove", "2025/01/20", NULL
          );
 
-
+-- Создание и заполнение дочерней таблицы со списком ачивок и айди человеков, у которых есть ачивки:
 CREATE TABLE achievements (
   achievement_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   achievement_title VARCHAR(50) NOT NULL,
@@ -125,4 +126,14 @@ INNER JOIN people -- так получаем только тех человек�
 -- RIGHT JOIN PEOPLE -- для получения списка всех человеков с подсчётом их ачивок
 ON achievements.human_getting_achievement_id = people.human_id
 GROUP BY people.first_name, people.last_name
+ORDER BY last_name ASC;
+
+--Проверим список людей на тех, кто пережил Клуб 27:
+SELECT * from people
+WHERE birth_year < 1998
+ORDER BY birth_year DESC;
+
+--Найдём тех, у которых в имени нет звука "ч":
+SElECT * from people
+where first_name NOT LIKE ('%ch%')
 ORDER BY last_name ASC;
