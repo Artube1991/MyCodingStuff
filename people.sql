@@ -117,7 +117,7 @@ SELECT first_name, last_name, achievement_title, scores FROM achievements
 RIGHT JOIN people
 ON achievements.human_getting_achievement_id = people.human_id;
 
---Количество ачивок и сумма очков
+--Количество ачивок и сумма очков:
 SELECT people.first_name, people.last_name,
 COUNT(achievement_title) as achievement_amount, 
 SUM(scores) as total_scores
@@ -128,7 +128,7 @@ ON achievements.human_getting_achievement_id = people.human_id
 GROUP BY people.first_name, people.last_name
 ORDER BY last_name ASC;
 
---Проверим список людей на тех, кто пережил Клуб 27:
+--Проверим список человеков на тех, кто пережил "Клуб 27":
 SELECT * from people
 WHERE birth_year < 1998
 ORDER BY birth_year DESC;
