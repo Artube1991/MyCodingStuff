@@ -65,3 +65,18 @@ VALUES(
 (
     "1", "3"
 );
+
+-- Решение задачи с использованием моей логики (чат джипити подсказал мне использование псевдонимов):
+SELECT c1.castle_name AS departure, c2.castle_name AS destination
+FROM roads
+LEFT JOIN castles AS c1 ON roads.castle1_id = c1.castle_id
+LEFT JOIN castles AS c2 ON roads.castle2_id = c2.castle_id
+ORDER BY road_id ASC;
+
+-- Решение задачи чатом ДжиПиТи:
+SELECT 
+    c1.castle_name AS departure, 
+    c2.castle_name AS destination
+FROM roads
+JOIN castles AS c1 ON roads.castle1_id = c1.castle_id
+JOIN castles AS c2 ON roads.castle2_id = c2.castle_id;
