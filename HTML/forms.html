@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script async defer src="script.js"></script>
+</head>
+<body>
+    <form action="output.html" method="get">
+
+        Name: <input type="text" name="name"><br>
+        Country: <input autofocus="autofocus" type="text" list="country" name="countries"> 	
+        <datalist id="country">   		
+          <option value="UK">   		
+          <option value="Canada">   		
+          <option value="USA">   		
+          <option value="India">   		
+          <option value="Brasil"> 	
+        </datalist><br> 	
+        Sex: <br>  	
+        <input class="sex" type="radio" name="sex" value="Male"> Male<br>  	
+        <input class="sex" type="radio" name="sex" value="Female" checked="checked"> Female<br>   	
+        <input type="submit" value="Submit"> 
+        <input type="reset" value="Cancel">
+      </form> 
+</body>
+</html>
