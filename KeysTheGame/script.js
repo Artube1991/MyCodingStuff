@@ -1,10 +1,8 @@
-let startButton = document.getElementById("start");
+const startButton = document.getElementById("start");
 
-let main = document.getElementById("main");
+const main = document.getElementById("main");
 
-let suitList = ["spades", "hearts", "clubs", "diamonds"];
-
-let show = false;
+const suitList = ["spades", "hearts", "clubs", "diamonds"];
 
 const getRandomInt = (min, max) => {
     min = Math.ceil(min);
@@ -31,21 +29,35 @@ const startTheGame = () => {
         console.log("the arr cut ==", cardList);
 
         let card = document.createElement("img");
-        card.setAttribute(`src`, `./media/${newCardList[i]}-${suitList[randomSuit]}.png`);
+        card.className = "card";
+        card.setAttribute(`src`, `./media/back.png`);
+        card.setAttribute("data-rank", newCardList[i]);
+        card.setAttribute("data-suit", suitList[randomSuit]);
+        card.setAttribute("data-show", "false");
         main.append(card);
-    }
-    // let card = document.createElement("img");
-    console.log(main);
-    // card.setAttribute(`src`, `./media/${attr}.png`);
+    };
+        const cards = document.querySelectorAll('[data-rank]');
+        cards.forEach(card => {
+        card.addEventListener("click", () => {
+        const rank = card.getAttribute('data-rank');
+        const suit = card.getAttribute('data-suit');
+        let show = card.getAttribute('data-show');
+        // alert(`Ты кликнул по карте с рангом ${rank}, а показ карты ${show}`);
+        if (show === "false") {
+            card.setAttribute(`src`, `./media/${rank}-${suit}.png`);
+            card.setAttribute('data-show', true);
+            // card.setAttribute(`src`, `./media/${newCardList[i]}-${suitList[randomSuit]}.png`);
+            console.log(show);
+         } else if (show === "true") {
+            card.setAttribute(`src`, `./media/back.png`);
+            card.setAttribute('data-show', false);
+            console.log(show);
+         }
+    });
+  });
     if (startButton.textContent === "Начать игру") {
         startButton.textContent = "Новая раздача";
     }
-    // if (show === false) {
-    //     show = true 
-    // } else {
-    //     show = false
-    // }
-    // console.log(show);
 };
 
 startButton.addEventListener("click", startTheGame);
