@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,21 @@
     <div id="form-block">
         <p>Показать турнирную таблицу</p>
         <h3>Турнирная таблица</h3>
-        <form>
-            
+        <form id="player-register">
+            <label for="name">Имя участника</label><input type="text" id="name"><br>
+            <button id="add-player">Добавить участника
+                </button>
         </form>
+            <button id="closing-form">Закончить добавлять участников
+            </button>
+        <table id="tournament-table">
+            <thead id="table-head">
+            <tr id="table-head-row">
+            </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

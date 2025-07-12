@@ -62,6 +62,47 @@ const startTheGame = () => {
 
 startButton.addEventListener("click", startTheGame);
 
+const formBlock = document.getElementById("form-block");
+
+const playerRegister = document.getElementById("player-register");
+// const gamerName = document.getElementById("name");
+const closingForm = document.getElementById("closing-form");
+
+const tableBody = document.getElementById("table-body");
+
+let players = [];
+
+let isTableHeadExistence = false;
+
+const addingPlayer = (e) => {
+    e.preventDefault();
+    players.push(playerRegister.name.value);
+    console.log(playerRegister.name.value);
+    console.log(players);
+    console.log(isTableHeadExistence);
+
+    // const table = document.createElement("table");
+    // table.className = "tournament-table";
+    // formBlock.append(table);
+
+    // const tableRowHead = document.createElement("tr");
+    // table.append(tableRowHead);
+
+    const tableHead = document.getElementById("table-head-row");
+    
+    if (isTableHeadExistence === false) {
+    for (let i=0; i <=15; i++) {
+        const tableCellHead = document.createElement("th");
+        tableHead.append(tableCellHead);
+        tableCellHead.innerText = `Вопрос №${i}`;
+        isTableHeadExistence = true;
+    }
+    }
+    
+};
+
+playerRegister.addEventListener("submit", addingPlayer);
+
 console.log(suitList);
 
 console.log(startButton);
