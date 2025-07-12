@@ -6,21 +6,23 @@ let cardList = ["two", "three", "four", "five", "six", "seven", "eight", "nine",
 
 let suitList = ["spades", "hearts", "clubs", "diamonds"];
 
-let attr = "back";
-
 let show = false;
 
 const startTheGame = () => {
+    main.innerHTML = '';
     console.log("The button is clicked!");
-    for (let i = 1; i <=14; i++) {
-        let p = document.createElement("p");
-        p.textContent = `Блок ${i}`;
-        main.append(p);
+    for (let i = 0; i <=cardList.length; i++) {
+        let card = document.createElement("img");
+        card.setAttribute(`src`, `./media/${cardList[i]}-spades.png`);
+        card.setAttribute(`border`, `solid, 1px, red`);
+        main.append(card);
     }
-    let card = document.createElement("img");
+    // let card = document.createElement("img");
     console.log(main);
-    main.append(card);
     card.setAttribute(`src`, `./media/${attr}.png`);
+    if (startButton.textContent === "Начать игру") {
+        startButton.textContent = "Новая раздача";
+    }
     // if (show === false) {
     //     show = true 
     // } else {
