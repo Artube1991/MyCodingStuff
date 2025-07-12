@@ -20,17 +20,18 @@ const startTheGame = () => {
     console.log("The button is clicked!");
     console.log(cardAmount);
     for (let i = 0; i <=cardAmount - 1; i++) {
-        let randomNumber = getRandomInt(0, cardList.length);
-        console.log(randomNumber);
+        let randomRank = getRandomInt(0, cardList.length);
+        let randomSuit = getRandomInt(0, suitList.length);
+        console.log(randomRank);
 
-        newCardList.push(cardList[randomNumber]);
+        newCardList.push(cardList[randomRank]);
         console.log(newCardList);
 
-        cardList.splice(randomNumber, 1);
+        cardList.splice(randomRank, 1);
         console.log("the arr cut ==", cardList);
 
         let card = document.createElement("img");
-        card.setAttribute(`src`, `./media/${newCardList[i]}-spades.png`);
+        card.setAttribute(`src`, `./media/${newCardList[i]}-${suitList[randomSuit]}.png`);
         main.append(card);
     }
     // let card = document.createElement("img");
