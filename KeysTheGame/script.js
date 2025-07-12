@@ -65,7 +65,9 @@ startButton.addEventListener("click", startTheGame);
 const formBlock = document.getElementById("form-block");
 
 const playerRegister = document.getElementById("player-register");
-// const gamerName = document.getElementById("name");
+
+const showTable = document.getElementById("show-table");
+
 const closingForm = document.getElementById("closing-form");
 
 const tableBody = document.getElementById("table-body");
@@ -73,6 +75,22 @@ const tableBody = document.getElementById("table-body");
 let players = [];
 
 let isTableHeadExistence = false;
+
+let isTableShowing = false;
+
+const showingTable = () => {
+    if (isTableShowing === false) {
+        formBlock.setAttribute("style", "display: block;");
+        isTableShowing = true;
+        showTable.innerText = "Скрыть турнирную таблицу";
+    } else {
+        formBlock.setAttribute("style", "display: none;");
+        isTableShowing = false;
+        showTable.innerText = "Показать турнирную таблицу";
+    }
+};
+
+showTable.addEventListener("click", showingTable);
 
 const addingPlayer = (e) => {
     e.preventDefault();
@@ -99,6 +117,24 @@ const addingPlayer = (e) => {
     }
     }
     
+    const playerRow = document.createElement("tr");
+    tableBody.append(playerRow);
+    playerRow.setAttribute(`id`, `player-id-${players.length}`);
+
+    const playerName = document.createElement("td");
+    playerRow.append(playerName);
+    playerName.innerText = playerRegister.name.value;
+
+    for (i=0; i <= 14; i++) {
+        const playerScores = document.createElement("td");
+        playerRow.append(playerScores);
+        
+        const scores = document.createElement("input");
+        playerScores.append(scores);
+        scores.setAttribute("type", "number");
+        scores.setAttribute("min", "-8");
+        scores.setAttribute("max", "8");
+    };
 };
 
 playerRegister.addEventListener("submit", addingPlayer);
