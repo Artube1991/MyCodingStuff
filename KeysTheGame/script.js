@@ -68,6 +68,8 @@ const playerRegister = document.getElementById("player-register");
 
 const showTable = document.getElementById("show-table");
 
+const addPlayer = document.getElementById("add-player");
+
 const closingForm = document.getElementById("closing-form");
 
 const tableBody = document.getElementById("table-body");
@@ -91,6 +93,14 @@ const showingTable = () => {
 };
 
 showTable.addEventListener("click", showingTable);
+
+const endingRegister = () => {
+    addPlayer.setAttribute("style", "display: none;");
+    closingForm.setAttribute("style", "display: none;");
+    playerRegister.setAttribute("style", "display: none;");   
+};
+
+closingForm.addEventListener("click", endingRegister);
 
 const addingPlayer = (e) => {
     e.preventDefault();
