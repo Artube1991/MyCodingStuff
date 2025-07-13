@@ -1,6 +1,6 @@
 const startButton = document.getElementById("start");
-
 const main = document.getElementById("main");
+const openingSong = document.getElementById("opening-song");
 
 const suitList = ["spades", "hearts", "clubs", "diamonds"];
 
@@ -12,6 +12,7 @@ const getRandomInt = (min, max) => {
 
 const startTheGame = () => {
     main.innerHTML = '';
+    openingSong.setAttribute("style", "display: none");
     let cardList = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace", "joker"];
     let newCardList = [];
     let cardAmount = cardList.length;
@@ -75,6 +76,8 @@ const closingForm = document.getElementById("closing-form");
 const tableBody = document.getElementById("table-body");
 
 const finishingGame = document.getElementById("finishing-game");
+
+const finishSong = document.getElementById("finish-song");
 
 const results = document.createElement('article');
 formBlock.append(results);
@@ -194,6 +197,7 @@ const resultingTheGame = () => {
 
     });
 
+    finishSong.setAttribute("style", "display: block;");
     console.log(players);
     console.log(playersScores);
 };
