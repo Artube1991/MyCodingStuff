@@ -76,6 +76,9 @@ const tableBody = document.getElementById("table-body");
 
 const finishingGame = document.getElementById("finishing-game");
 
+const results = document.createElement('article');
+formBlock.append(results);
+
 let players = [];
 
 let isTableHeadExistence = false;
@@ -99,7 +102,8 @@ showTable.addEventListener("click", showingTable);
 const endingRegister = () => {
     addPlayer.setAttribute("style", "display: none;");
     closingForm.setAttribute("style", "display: none;");
-    playerRegister.setAttribute("style", "display: none;");   
+    playerRegister.setAttribute("style", "display: none;"); 
+    finishingGame.setAttribute("style", "display: block;"); 
 };
 
 closingForm.addEventListener("click", endingRegister);
@@ -111,23 +115,19 @@ const addingPlayer = (e) => {
     console.log(players);
     console.log(isTableHeadExistence);
 
-    // const table = document.createElement("table");
-    // table.className = "tournament-table";
-    // formBlock.append(table);
-
-    // const tableRowHead = document.createElement("tr");
-    // table.append(tableRowHead);
-
     const tableHead = document.getElementById("table-head-row");
     
     if (isTableHeadExistence === false) {
-    for (let i=0; i <=15; i++) {
-        const tableCellHead = document.createElement("th");
-        tableHead.append(tableCellHead);
-        tableCellHead.innerText = `Вопрос №${i}`;
         isTableHeadExistence = true;
-    }
-    }
+        for (let i=0; i <=14; i++) {
+            const tableCellHead = document.createElement("th");
+            tableHead.append(tableCellHead);
+            tableCellHead.innerText = `Вопрос №${i}`;
+            if (i === 0) {
+                tableCellHead.innerText = "Имя игрока";
+            }
+            }
+        }
     
     const playerRow = document.createElement("tr");
     tableBody.append(playerRow);
@@ -137,7 +137,7 @@ const addingPlayer = (e) => {
     playerRow.append(playerName);
     playerName.innerText = playerRegister.name.value;
 
-    for (i=0; i <= 14; i++) {
+    for (i=0; i <= 13; i++) {
         const playerScores = document.createElement("td");
         playerRow.append(playerScores);
         
@@ -149,6 +149,8 @@ const addingPlayer = (e) => {
         scores.setAttribute("max", "8");
     };
 
+    playerRegister.name.value = '';
+
     let points = document.getElementById("player-id-1");
     console.log(points);
 };
@@ -157,11 +159,19 @@ playerRegister.addEventListener("submit", addingPlayer);
 
 const resultingTheGame = () => {
     const rowsScores = tableBody.querySelectorAll('tr');
+    results.textContent = '';
+    results.textContent = 'Дорогие друзья, девятая игра в серии литературного "Что? Где? Когда?" подошла к концу. Пришла пора подвести её итоги. По итогам сыгранных четырнадцати вопросов баллы распределились следующим образом: '
+    const players = [];
     const playersScores = [];
 
     rowsScores.forEach(row => {
     const inputs = row.querySelectorAll('input[name="scores"]');
     let sum = 0;
+    const playerScoreRow = row.querySelectorAll("td");
+    const player = playerScoreRow[0].textContent.trim();
+    players.push(player);
+    const playerScoresShowed = document.createElement("p");
+    results.append(playerScoresShowed);
 
     inputs.forEach(input => {
     const value = parseFloat(input.value);
@@ -171,8 +181,20 @@ const resultingTheGame = () => {
   })
 
     playersScores.push(sum);
+
+    if (sum > 4) {
+        playerScoresShowed.textContent = `${player} — ${sum} баллов`
+    } else if (sum > 1 && sum < 5) {
+        playerScoresShowed.textContent = `${player} — ${sum} балла`
+    } else if (sum === 1) {
+        playerScoresShowed.textContent = `${player} — ${sum} балл`
+    } else if (sum <= 0) {
+        playerScoresShowed.textContent = `${player} — 0 баллов`
+    };
+
     });
 
+    console.log(players);
     console.log(playersScores);
 };
 
