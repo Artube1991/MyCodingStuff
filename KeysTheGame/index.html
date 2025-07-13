@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Что? Где? Когда? | Игры литературного клуба "Ключи"</title>
+    <title>Что? Где? Когда? | Игры литературного клуба «Ключи»</title>
 </head>
 <body>
     <nav>
-
+        <a href="https://vk.com/keys_the_club" target="_blank"><img id="logo" src="./images/logo.png" width="150px" height="150px"></a>
     </nav>
     <div id="headings">
-        <h1>Литературный клуб "Ключи" представляет...</h1>
-        <h2>Литературное "Что? Где? Когда?"</h2>
+        <h1>Литературный клуб «Ключи» представляет</h1>
+        <h2>Литературное «Что? Где? Когда?»</h2>
         <h3>Игра №9 (13.07.2025)</h3>
         <audio id="opening-song" controls>
             <source src="./audio/zaratusrta.mp3" type="audio/mp3">
         </audio>
+        <button id="start">Начать игру</button>
     </div>
-    <button id="start">Начать игру</button>
     <section id="main">
         <div id="card-block">
         </div>
     </section>
+    <section id="tournament-block">
     <a id="show-table" href="#">Показать турнирную таблицу</a>
     <div id="form-block">
         <h3>Турнирная таблица</h3>
@@ -31,9 +33,10 @@
             <label for="name">Имя участника</label><input type="text" id="name"><br>
             <button id="add-player">Добавить участника
                 </button>
-        </form>
             <button id="closing-form">Закончить добавлять участников
             </button>
+        </form>
+
         <table id="tournament-table">
             <thead id="table-head">
             <tr id="table-head-row">
@@ -49,6 +52,7 @@
             <source src="./audio/finish.mp3" type="audio/mp3">
         </audio>
     </div>
+    </section>
     <footer>
 
     </footer>

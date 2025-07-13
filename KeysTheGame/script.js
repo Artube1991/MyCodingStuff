@@ -81,6 +81,7 @@ const finishSong = document.getElementById("finish-song");
 
 const results = document.createElement('article');
 formBlock.append(results);
+results.className = "results-block";
 
 let players = [];
 
@@ -90,7 +91,7 @@ let isTableShowing = false;
 
 const showingTable = () => {
     if (isTableShowing === false) {
-        formBlock.setAttribute("style", "display: block;");
+        formBlock.setAttribute("style", "display: flex;");
         isTableShowing = true;
         showTable.innerText = "Скрыть турнирную таблицу";
     } else {
@@ -163,7 +164,7 @@ playerRegister.addEventListener("submit", addingPlayer);
 const resultingTheGame = () => {
     const rowsScores = tableBody.querySelectorAll('tr');
     results.textContent = '';
-    results.textContent = 'Дорогие друзья, девятая игра в серии литературного "Что? Где? Когда?" подошла к концу. Пришла пора подвести её итоги. По итогам сыгранных четырнадцати вопросов баллы распределились следующим образом: '
+    results.textContent = 'Дорогие друзья, девятая игра в серии литературного «Что? Где? Когда?» подошла к концу. Пришла пора подвести её итоги. По итогам сыгранных четырнадцати вопросов баллы распределились следующим образом: '
     const players = [];
     const playersScores = [];
 

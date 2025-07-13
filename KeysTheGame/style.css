@@ -4,18 +4,85 @@ body {
     font-family: "Bookman Old Style", serif;
 }
 
+#logo {
+    position: absolute;
+    top: -50px;
+    right: -20px;
+}
+
 #headings {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+#start {
+    border-radius: 2em;
+    font-size: 30px;
+    margin: 1%;
+    padding: 2%;
+    color: darkblue;
+    font-family: Book Antiqua, serif;
+}
+
+#start:hover {
+    background-color: aquamarine;
+}
+
+.card {
+    width: 200px;
+    height: 282px;
+    margin: 1%;
+}
+
+#show-table {
+    font-size: 17px;
+}
+
+#tournament-block {
+    width: 100%;
+    font-size: 13px;
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-block {
+    width: 700px;
+}
+
+#add-player {
+    font-family: Book Antiqua, serif;
+    color: green;
+    font-size: 15px;
+}
+
 #form-block {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+#closing-form {
+    font-family: Book Antiqua, serif;
+    font-size: 15px;
+    margin: 1%;
 }
 
 #finishing-game {
     display: none;
+    border-radius: 2em;
+    font-size: 25px;
+    color: red;
+    margin: 1%;
+    font-family: Antiqua, serif;
 }
 
 #finish-song {
