@@ -159,7 +159,7 @@ const addingPlayer = (e) => {
     console.log(points);
 };
 
-playerRegister.addEventListener("submit", addingPlayer);
+addPlayer.addEventListener("click", addingPlayer);
 
 const resultingTheGame = () => {
     const rowsScores = tableBody.querySelectorAll('tr');
